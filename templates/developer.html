@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-image: url('https://wallpaperaccess.com/full/136920.jpg'); /* Replace with your background image URL */
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      color: #495057;
+      font-family: 'Open Sans', sans-serif;
+    }
+   .container {
+      margin-top: 50px;
+      background-color: #191f22;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+  color: #007bff; /* Healthcare blue color */
+  font-weight: bold;
+  font-size: 36px;
+
+}
+
+h1:hover {
+  background-position: left bottom;
+  text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FF7F7F, 0 0 30px #007bff, 0 0 40px #007bff;
+}
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #999999;
+    }
+   .lead {
+  font-size: 24px;
+  font-weight: 500;
+  color: #999999;
+  border-radius: 10px; /* rounded sides */
+  border: 1px solid #ccc; /* grayish metallic border */
+  padding: 10px; /* add some padding to create a box-like structure */
+  background-color: #262626; /* light gray background */
+  font-family: Arial, sans-serif; /* use a bold font family */
+}
+    }
+    hr {
+      border-top: 1px solid #cccccc;
+    }
+    .profile-card {
+  width: 200px;
+  height: 300px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.profile-pic {
+  width: 100%;
+  height: auto;
+  border-radius: 5px 5px 0 0;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #E2DFD2
+}
+
+.profile-title {
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #FFE5B4;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <h1 class="text-center">Developer</h1>
+        <p class="lead text-center">Ayush Kumar - Meet The Developer</p>
+         <p style="text-align: justify;">Hello, I'm Ayush Kumar, an AI and Machine Learning Engineer with over 3 years of experience in the field. I am passionate about harnessing technology to make a positive impact on people's lives. Allow me to share a bit about my journey in the world of artificial intelligence and machine learning.</p>
+        <div class="profile-card container" style="background: linear-gradient(to bottom right, #404040, #707070), radial-gradient(circle at top left, rgba(255,255,255,0.5), rgba(255,255,255,0)); padding: 20px;">
+  <img src="{{ url_for('static', filename='profile_pic.jpg') }}" alt="Profile Picture" class="profile-pic">
+  <div class="profile-info">
+    <p class="profile-name">Ayush Kumar</p>
+    <p class="profile-title">Machine Learning Engineer</p>
+  </div>
+</div>
+        <hr>
+          <p>
+              <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="https://w7.pngwing.com/pngs/473/452/png-transparent-computer-icons-symbol-innovation-symbol-miscellaneous-logo-expert-thumbnail.png" alt="" width="72" height="57">
+    <h1 class="display-5 fw-bold text-body-emphasis">My Expertise</h1>
+          <p style="text-align: justify;">My expertise in machine learning (ML) stems from my comprehensive academic background and hands-on experience. Pursuing a B.Tech in Computer Science Engineering, I've achieved a notable CGPA of 9.13, showcasing my dedication and aptitude. Proficient in languages like C, C++, and Python, I've specialized in ML frameworks such as TensorFlow, Keras, and Pandas. Additionally, my expertise extends to web development, graphic design, and multimedia editing. Through projects like brain tumor detection and heart health monitoring systems, I've demonstrated my ability to apply ML algorithms effectively. With accolades from hackathons and roles as a Launchpad student and Campus Student Ambassador, I possess a well-rounded skill set ready to make an impact in any ML endeavor.</p>
+
+
+  </div>
+          </p>
+          <p>
+              <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtoRb5IBvZmm358MTf-GqIwZh0VLLQn753blPcx6PhUA&s" alt="" width="72" height="57">
+    <h1 class="display-5 fw-bold text-body-emphasis">Commitment to Excellence</h1>
+         <p style="text-align: justify;">My work is driven by a commitment to excellence and a belief that technology should be accessible and beneficial to everyone. Whether it's developing predictive models, creating intelligent algorithms, or designing user-friendly interfaces, I strive for solutions that are both cutting-edge and user-centric.</p>
+  </div>
+          </p>
+          <p>
+              <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="https://cdn-icons-png.flaticon.com/512/6863/6863897.png" alt="" width="72" height="57">
+    <h1 class="display-5 fw-bold text-body-emphasis">Passion for Health Tech</h1>
+         <p style="text-align: justify;">The development of MediSage represents a convergence of my passion for AI and my dedication to improving healthcare accessibility. I believe that AI has the potential to transform the way we approach healthcare, making it more personalized and informative. This platform is a testament to that vision.</p>
+  </div>
+          </p>
+      </div>
+    </div>
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

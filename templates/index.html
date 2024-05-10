@@ -1,0 +1,545 @@
+<!doctype html>
+<html data-bs-theme="dark" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>MediSage</title>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" rel="stylesheet">
+  <script>
+  window.onload = function() {
+    function speakText(text) {
+      const synth = window.speechSynthesis;
+      const utterance = new SpeechSynthesisUtterance(text);
+      // Get all available voices
+      const voices = synth.getVoices();
+      // Find a female voice
+      const femaleVoice = voices.find(voice => voice.name.includes('female'));
+      // Set the voice to the first available female voice
+      utterance.voice = femaleVoice || voices[0]; // Use the first available voice if no female voice found
+      utterance.rate = 1; // Set the rate to normal
+      utterance.volume = 1; // Set the volume to normal
+      synth.speak(utterance);
+    }
+
+    const medisageText = document.querySelector('.navbar-brand');
+    medisageText.addEventListener('click', () => {
+      speakText('Welcome to MediSage. Proceed to enter symptoms of disease.');
+    });
+  }
+</script>
+      <script crossorigin="anonymous" integrity="sha384-DfXdz2htPH0lsSSGFpoO/ufreqqF6MVu4JdG7PhIxZlW8sSJv43gkdSHluaInJd/X7" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script crossorigin="anonymous" integrity="sha384-eMNCOe7tC1doHpGoJtKh7z7lGz7fuP4F8nfdFvAOA6Gg/z6Y5J6XqqyGXYM2ntX5" src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script crossorigin="anonymous" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+
+  <style>
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            color: black;
+            margin-top: 0;
+            margin-left: 2px;
+        }
+
+        .myimg {
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            border-radius: 25px;
+        }
+
+        body {
+            background-image: url('https://wallpaperaccess.com/full/4434045.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .wrapper {
+            min-height: 100vh; /* make sure the wrapper takes up the full height */
+        }
+        .footer-dark {
+  background-color: #343a40; /* Change this to your preferred dark color */
+}
+    .result-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+
+          .toggle-button {
+            width: calc(100% / 6 - 10px);
+            margin: 5px;
+          }
+.navbar-brand {
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+  color: #c0c0c0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.1);
+  color: #007bff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0 0 5px #00bfff);
+}
+      @keyframes glow {
+  0% { background-color: #232323; }
+  50% { background-color: #4d4d4d; }
+  100% { background-color: #232323; }
+}
+
+.glowing-zooming-curved {
+  background-color: #232323;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.5s ease;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.glowing-zooming-curved:hover {
+  animation: zoom 10s forwards;
+  text-shadow: 2px 2px 4px #ccc;
+  box-shadow: 0 0 10px #ccc;
+}
+
+@keyframes zoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+      .unique-label {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+}
+      .metallic-button {
+  padding: 4px;
+  margin: 5px 40px 5px 0;
+  font-size: 20px;
+  font-weight: bold;
+  width: 140px;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #808080, #a9a9a9, #808080);
+  color: black;
+  transition: transform 0.2s ease-in-out;
+}
+      .metallic-button:hover {
+  transform: scale(1.1);
+}
+      .metallic-white {
+  background: linear-gradient(45deg, #fff, #fff, #ddd, #fff, #fff);
+  background-size: 200% 200%;
+  background-position: 0 0;
+  color: transparent;
+  -webkit-background-clip: text;
+  animation: metallic-white 2s ease infinite;
+}
+      @keyframes metallic-white {
+  0% { background-position: 0 0; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0 0; }
+
+      .bold-metal-silver-gradient {
+  background: linear-gradient(45deg, #808080, #a9a9a9, #808080);
+  color: #c0c0c0;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+}
+
+    </style>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <!-- Logo at the top-left corner -->
+      <div class="logo">
+        <img alt="Logo" class="myimg" src="{{ url_for('static', filename='Logo_med.png') }}">
+      </div>
+      <a class="navbar-brand" href="#">MediSage</a>
+      <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a aria-current="page" class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/developer">Developer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog">Blog</a>
+          </li>
+          <li class="nav-item dropdown">
+            <button aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" id="dropdownMenu2" style="background-color: #28282B;color: #bfbfbf;" type="button">
+                Possible Symptoms
+              </button>
+            <div aria-labelledby="dropdownMenu2" class="dropdown-menu">
+              <button class="dropdown-item" type="button">itching</button>
+<button class="dropdown-item" type="button">skin_rash</button>
+<button class="dropdown-item" type="button">nodal_skin_eruptions</button>
+<button class="dropdown-item" type="button">continuous_sneezing</button>
+<button class="dropdown-item" type="button">shivering</button>
+<button class="dropdown-item" type="button">chills</button>
+<button class="dropdown-item" type="button">joint_pain</button>
+<button class="dropdown-item" type="button">stomach_pain</button>
+<button class="dropdown-item" type="button">acidity</button>
+<button class="dropdown-item" type="button">ulcers_on_tongue</button>
+<button class="dropdown-item" type="button">muscle_wasting</button>
+<button class="dropdown-item" type="button">vomiting</button>
+<button class="dropdown-item" type="button">burning_micturition</button>
+<button class="dropdown-item" type="button">spotting_urination</button>
+<button class="dropdown-item" type="button">fatigue</button>
+<button class="dropdown-item" type="button">weight_gain</button>
+<button class="dropdown-item" type="button">anxiety</button>
+<button class="dropdown-item" type="button">cold_hands_and_feets</button>
+<button class="dropdown-item" type="button">mood_swings</button>
+<button class="dropdown-item" type="button">weight_loss</button>
+<button class="dropdown-item" type="button">restlessness</button>
+<button class="dropdown-item" type="button">lethargy</button>
+<button class="dropdown-item" type="button">patches_in_throat</button>
+<button class="dropdown-item" type="button">irregular_sugar_level</button>
+<button class="dropdown-item" type="button">cough</button>
+<button class="dropdown-item" type="button">high_fever</button>
+<button class="dropdown-item" type="button">sunken_eyes</button>
+<button class="dropdown-item" type="button">breathlessness</button>
+<button class="dropdown-item" type="button">sweating</button>
+<button class="dropdown-item" type="button">dehydration</button>
+<button class="dropdown-item" type="button">indigestion</button>
+<button class="dropdown-item" type="button">headache</button>
+<button class="dropdown-item" type="button">yellowish_skin</button>
+<button class="dropdown-item" type="button">dark_urine</button>
+<button class="dropdown-item" type="button">nausea</button>
+<button class="dropdown-item" type="button">loss_of_appetite</button>
+<button class="dropdown-item" type="button">pain_behind_the_eyes</button>
+<button class="dropdown-item" type="button">back_pain</button>
+<button class="dropdown-item" type="button">constipation</button>
+<button class="dropdown-item" type="button">abdominal_pain</button>
+<button class="dropdown-item" type="button">diarrhoea</button>
+<button class="dropdown-item" type="button">mild_fever</button>
+<button class="dropdown-item" type="button">yellow_urine</button>
+<button class="dropdown-item" type="button">yellowing_of_eyes</button>
+<button class="dropdown-item" type="button">acute_liver_failure</button>
+<button class="dropdown-item" type="button">fluid_overload</button>
+<button class="dropdown-item" type="button">swelling_of_stomach</button>
+<button class="dropdown-item" type="button">swelled_lymph_nodes</button>
+<button class="dropdown-item" type="button">malaise</button>
+<button class="dropdown-item" type="button">blurred_and_distorted_vision</button>
+<button class="dropdown-item" type="button">phlegm</button>
+<button class="dropdown-item" type="button">throat_irritation</button>
+<button class="dropdown-item" type="button">redness_of_eyes</button>
+<button class="dropdown-item" type="button">sinus_pressure</button>
+<button class="dropdown-item" type="button">runny_nose</button>
+<button class="dropdown-item" type="button">congestion</button>
+<button class="dropdown-item" type="button">chest_pain</button>
+<button class="dropdown-item" type="button">weakness_in_limbs</button>
+<button class="dropdown-item" type="button">fast_heart_rate</button>
+<button class="dropdown-item" type="button">pain_during_bowel_movements</button>
+<button class="dropdown-item" type="button">pain_in_anal_region</button>
+<button class="dropdown-item" type="button">bloody_stool</button>
+<button class="dropdown-item" type="button">irritation_in_anus</button>
+<button class="dropdown-item" type="button">neck_pain</button>
+<button class="dropdown-item" type="button">dizziness</button>
+<button class="dropdown-item" type="button">cramps</button>
+<button class="dropdown-item" type="button">bruising</button>
+<button class="dropdown-item" type="button">obesity</button>
+<button class="dropdown-item" type="button">swollen_legs</button>
+<button class="dropdown-item" type="button">swollen_blood_vessels</button>
+<button class="dropdown-item" type="button">puffy_face_and_eyes</button>
+<button class="dropdown-item" type="button">enlarged_thyroid</button>
+<button class="dropdown-item" type="button">brittle_nails</button>
+<button class="dropdown-item" type="button">swollen_extremeties</button>
+<button class="dropdown-item" type="button">excessive_hunger</button>
+<button class="dropdown-item" type="button">extra_marital_contacts</button>
+<button class="dropdown-item" type="button">drying_and_tingling_lips</button>
+<button class="dropdown-item" type="button">slurred_speech</button>
+<button class="dropdown-item" type="button">knee_pain</button>
+<button class="dropdown-item" type="button">hip_joint_pain</button>
+<button class="dropdown-item" type="button">muscle_weakness</button>
+<button class="dropdown-item" type="button">stiff_neck</button>
+<button class="dropdown-item" type="button">swelling_joints</button>
+<button class="dropdown-item" type="button">movement_stiffness</button>
+<button class="dropdown-item" type="button">spinning_movements</button>
+<button class="dropdown-item" type="button">loss_of_balance</button>
+<button class="dropdown-item" type="button">unsteadiness</button>
+<button class="dropdown-item" type="button">weakness_of_one_body_side</button>
+<button class="dropdown-item" type="button">loss_of_smell</button>
+<button class="dropdown-item" type="button">bladder_discomfort</button>
+<button class="dropdown-item" type="button">foul_smell_ofurine</button>
+<button class="dropdown-item" type="button">continuous_feel_of_urine</button>
+<button class="dropdown-item" type="button">passage_of_gases</button>
+<button class="dropdown-item" type="button">internal_itching</button>
+<button class="dropdown-item" type="button">toxic_look_(typhos)</button>
+<button class="dropdown-item" type="button">depression</button>
+<button class="dropdown-item" type="button">irritability</button>
+<button class="dropdown-item" type="button">muscle_pain</button>
+<button class="dropdown-item" type="button">altered_sensorium</button>
+<button class="dropdown-item" type="button">red_spots_over_body</button>
+<button class="dropdown-item" type="button">belly_pain</button>
+<button class="dropdown-item" type="button">abnormal_menstruation</button>
+<button class="dropdown-item" type="button">dischromic_patches</button>
+<button class="dropdown-item" type="button">watering_from_eyes</button>
+<button class="dropdown-item" type="button">increased_appetite</button>
+<button class="dropdown-item" type="button">polyuria</button>
+<button class="dropdown-item" type="button">family_history</button>
+<button class="dropdown-item" type="button">mucoid_sputum</button>
+<button class="dropdown-item" type="button">rusty_sputum</button>
+<button class="dropdown-item" type="button">lack_of_concentration</button>
+<button class="dropdown-item" type="button">visual_disturbances</button>
+<button class="dropdown-item" type="button">receiving_blood_transfusion</button>
+<button class="dropdown-item" type="button">receiving_unsterile_injections</button>
+<button class="dropdown-item" type="button">coma</button>
+<button class="dropdown-item" type="button">stomach_bleeding</button>
+<button class="dropdown-item" type="button">distention_of_abdomen</button>
+<button class="dropdown-item" type="button">history_of_alcohol_consumption</button>
+<button class="dropdown-item" type="button">blood_in_sputum</button>
+<button class="dropdown-item" type="button">prominent_veins_on_calf</button>
+<button class="dropdown-item" type="button">palpitations</button>
+<button class="dropdown-item" type="button">painful_walking</button>
+<button class="dropdown-item" type="button">pus_filled_pimples</button>
+<button class="dropdown-item" type="button">blackheads</button>
+<button class="dropdown-item" type="button">scurring</button>
+<button class="dropdown-item" type="button">skin_peeling</button>
+<button class="dropdown-item" type="button">silver_like_dusting</button>
+<button class="dropdown-item" type="button">small_dents_in_nails</button>
+<button class="dropdown-item" type="button">inflammatory_nails</button>
+<button class="dropdown-item" type="button">blister</button>
+<button class="dropdown-item" type="button">red_sore_around_nose</button>
+<button class="dropdown-item" type="button">yellow_crust_ooze</button>
+<button class="dropdown-item" type="button">prognosis</button>
+
+            </div>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input aria-label="Search" class="form-control me-2" placeholder="Search" type="search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+<!-- main form of page -->
+<h1 class="mt-4 my-4 text-center text-green" style="font-family: 'Roboto Mono', monospace; font-weight: bold; color: #333; text-shadow: 2px 2px 2px #ccc; background-color: #f5f5dc; padding: 10px;">Health Care Center</h1>
+<div class="container my-4 mt-4 glowing-zooming-curved" style="background-color: #232323; padding: 20px;">
+    <form action="/predict" method="post">
+        <div class="form-group">
+            <label class="unique-label" for="symptoms">Select Symptoms:</label>
+            <input class="form-control"id="symptoms" name="symptoms" placeholder="type systems such as itching, sleeping, aching etc" type="text">
+
+        </div>
+        <br>
+        <button class="btn btn-primary" id="startSpeechRecognition" style="margin-left:3px;border:1px solid white; border-radius:20px;background: linear-gradient(to bottom right, #3353a4, #2a4aa0, #1d3aaa, #0f2996, #001a89););" type="button">
+            Start Speech Recognition
+        </button>
+        <br>
+
+        <!-- Display the transcribed text here -->
+        <div id="transcription" name="mysysms"></div>
+
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+        <br>
+
+        <button class="btn btn-danger btn-lg" style="width: 100%; padding: 14px; margin-bottom: 5px;background: linear-gradient(to bottom right, #8e0000, #7a0000, #660000, #520000, #3e0000);" type="submit">Predict</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+{% if predicted_disease %}
+
+<!-- Results -->
+<h1 class="text-center my-4 mt-4 metallic-white">AI System Results</h1>
+<div class="container">
+
+    <div class="result-container">
+        <!-- Buttons to toggle display -->
+       <button class="metallic-button" data-bs-target="#diseaseModal" data-bs-toggle="modal" style="padding: 4px; margin: 5px 40px 5px 0; font-size: 20px; font-weight: bold; width: 140px; border-radius: 5px;">Disease</button>
+        <button class="metallic-button" data-bs-target="#descriptionModal" data-bs-toggle="modal" style="padding: 4px; margin: 5px 40px 5px 0; font-size: 20px; font-weight: bold; width: 140px; border-radius: 5px;">Description</button>
+        <button class="metallic-button" data-bs-target="#precautionModal" data-bs-toggle="modal" style="padding: 4px; margin: 5px 40px 5px 0; font-size: 20px; font-weight: bold; width: 140px; border-radius: 5px;">Precaution</button>
+        <button class="metallic-button" data-bs-target="#medicationsModal" data-bs-toggle="modal" style="padding: 4px; margin: 5px 40px 5px 0; font-size: 20px; font-weight: bold; width: 140px; border-radius: 5px;">Medications</button>
+        <button class="metallic-button" data-bs-target="#workoutsModal" data-bs-toggle="modal" style="padding: 4px; margin: 5px 40px 5px 0; font-size: 20px; font-weight: bold; width: 140px; border-radius: 5px;">Workouts</button>
+        <button class="metallic-button" data-bs-target="#dietsModal" data-bs-toggle="modal" style="padding: 4px; margin: 5px 40px 5px 0; font-size: 20px; font-weight: bold; width: 140px; border-radius: 5px;">Diets</button>
+    </div>
+</div>
+
+{% endif %}
+
+<!-- Disease Modal -->
+    <div aria-hidden="true" aria-labelledby="diseaseModalLabel" class="modal fade" id="diseaseModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;"> <!-- Set header background color inline -->
+                    <h5 class="modal-title bold-metal-silver-gradient" id="diseaseModalLabel" >Predicted Disease</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body" style="font-family: 'Jersey 25';">
+                    <p>{{ predicted_disease }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Description Modal -->
+    <div aria-hidden="true" aria-labelledby="descriptionModalLabel" class="modal fade" id="descriptionModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title bold-metal-silver-gradient" id="descriptionModalLabel">Description</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body" style="font-family: 'Jersey 25';">
+                    <p>{{ dis_des }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Precaution Modal -->
+    <div aria-hidden="true" aria-labelledby="precautionModalLabel" class="modal fade" id="precautionModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title bold-metal-silver-gradient" id="precautionModalLabel">Precaution</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body" style="font-family: 'Jersey 25';">
+                    <ul>
+                        {% for i in my_precautions %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Medications Modal -->
+    <div aria-hidden="true" aria-labelledby="medicationsModalLabel" class="modal fade" id="medicationsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title bold-metal-silver-gradient" id="medicationsModalLabel">Medications</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body" style="font-family: 'Jersey 25';">
+                    <ul>
+                        {% for i in medications %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workouts Modal -->
+    <div aria-hidden="true" aria-labelledby="workoutsModalLabel" class="modal fade" id="workoutsModal" tabindex="-1">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title bold-metal-silver-gradient" id="workoutsModalLabel">Workouts</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body" style="font-family: 'Jersey 25';">
+                    <ul>
+                        {% for i in workout %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diets Modal -->
+    <div aria-hidden="true" aria-labelledby="dietsModalLabel" class="modal fade" id="dietsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title bold-metal-silver-gradient" id="dietsModalLabel">Diets</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body" style="font-family: 'Jersey 25';">
+                    <ul>
+                        {% for i in my_diet %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 metallic-white">© Developed by Ayush Kumar</p>
+
+    <a class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" href="/">
+      <svg class="bi me-2" height="32" width="40"><use xlink:href="#bootstrap"></use></svg>
+    </a>
+
+    <ul class="nav col-md-4 justify-content-end">
+      <li class="nav-item"><a class="nav-link px-2 text-dark" href="./contact">Contact</a></li>
+      <li class="nav-item">
+  <a class="nav-link px-2 text-body-secondary d-flex align-items-center" href="https://www.instagram.com/me__ayushkumar/" target="_blank">
+    <img alt="Instagram logo" height="24" src="https://cdn-icons-png.flaticon.com/512/87/87390.png" width="24">
+    <span class="visually-hidden">Instagram</span>
+  </a>
+</li>
+      <li class="nav-item"><a class="nav-link px-2 text-dark" href="/about">About</a></li>
+    </ul>
+  </footer>
+</div>
+
+
+        <script>
+    const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
+    const transcriptionDiv = document.getElementById('transcription');
+
+    startSpeechRecognitionButton.addEventListener('click', startSpeechRecognition);
+
+    function startSpeechRecognition() {
+        const recognition = new webkitSpeechRecognition(); // Use webkitSpeechRecognition for compatibility
+
+        recognition.lang = 'en-US'; // Set the language for recognition
+
+        recognition.onresult = function (event) {
+            const result = event.results[0][0].transcript;
+            transcriptionDiv.textContent = result;
+        };
+
+        recognition.onend = function () {
+            console.log('Speech recognition ended.');
+        };
+
+        recognition.start();
+    }
+</script>
+
+    <script crossorigin="anonymous" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
